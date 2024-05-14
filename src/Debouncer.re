@@ -36,7 +36,7 @@ let makeCancelable = (~wait=100, fn: 'a => unit): debounced('a) => {
       invoke();
     } else {
       timerId :=
-        Some(time->remainingWait->Js.Global.setTimeout(timerExpired, _));
+        Some(time->remainingWait->Js.Global.setTimeout(~f=timerExpired, _));
     };
   }
   and invoke = () => {
@@ -54,9 +54,9 @@ let makeCancelable = (~wait=100, fn: 'a => unit): debounced('a) => {
     let time = Js.Date.now()->int_of_float;
     lastArg := Some(x);
     lastCallTime := Some(time);
-    timerId := Some(wait->Js.Global.setTimeout(timerExpired, _));
+    timerId := Some(wait->Js.Global.setTimeout(~f=timerExpired, _));
   };
-  let scheduled = () => (timerId^)->Belt.Option.isSome;
+  let scheduled = () => (timerId^)->Stdlib.Option.is_some;
   let cancel = () =>
     switch (timerId^) {
     | Some(timerId') =>

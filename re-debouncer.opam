@@ -10,7 +10,7 @@ bug-reports: "https://github.com/shakacode/rescript-debounce/issues"
 depends: [
   "dune" {>= "3.12"}
   "dot-merlin-reader"
-  "melange" {>= "2.0.0"}
+  "melange" {>= "3.0.0" & < "4.0.0"}
   "ocaml" {>= "5.1.0"}
   "reason" {>= "3.10.0"}
   "ocaml-lsp-server"

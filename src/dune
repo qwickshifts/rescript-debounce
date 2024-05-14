@@ -1,7 +1,6 @@
 (library
  (name ReDebouncer)
  (public_name re-debouncer)
- (libraries)
  (modes melange)
  (preprocess
   (pps melange.ppx)))
